@@ -8,7 +8,13 @@ public class FallBackController {
 
     @GetMapping("/login-service-fallback")
     public String loginServiceFallBack() {
-        return "User Service is taking longer than Excepted." +
+        return "Login Service is taking longer than Excepted." +
+                " Please try again later";
+    }
+
+    @GetMapping("/token-service-fallback")
+    public String tokenServiceFallBack() {
+        return "Token Service is taking longer than Excepted." +
                 " Please try again later";
     }
 }

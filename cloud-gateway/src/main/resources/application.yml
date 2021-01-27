@@ -16,6 +16,15 @@ spring:
              args:
                name: LOGIN-SERVICE
                fallbackuri: forward:/login-service-fallback
+        - id: TOKEN-SERVICE
+            uri: lb://TOKEN-SERVICE
+            predicates:
+              - Path=/token/**
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: TOKEN-SERVICE
+                  fallbackuri: forward:/token-service-fallback
 
 hystrix:
   command:

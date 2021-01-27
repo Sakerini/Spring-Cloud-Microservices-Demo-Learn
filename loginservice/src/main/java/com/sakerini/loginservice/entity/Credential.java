@@ -1,11 +1,15 @@
 package com.sakerini.loginservice.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity(name = "Credentials")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Credential {
 
     @Id
@@ -24,14 +28,6 @@ public class Credential {
     private String username;
     @Column(nullable = false)
     private String password;
-
-    public Credential() {
-    }
-
-    public Credential(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     @Override
     public String toString() {

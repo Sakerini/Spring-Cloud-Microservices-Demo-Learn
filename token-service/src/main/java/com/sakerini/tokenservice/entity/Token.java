@@ -1,11 +1,15 @@
 package com.sakerini.tokenservice.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity(name = "Token")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Token {
 
     @Id
@@ -17,22 +21,15 @@ public class Token {
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String Token;
 
-    public Token() {
-    }
-
     @Override
     public String toString() {
         return "Token{" +
                 "id=" + id +
-                ", userId=" + userId +
                 ", username='" + username + '\'' +
                 ", Token='" + Token + '\'' +
                 '}';

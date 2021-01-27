@@ -8,6 +8,8 @@ import com.sakerini.loginservice.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 @Slf4j
@@ -15,6 +17,11 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private CredentialRepository credentialRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    private final String TOKEN_SERVICE_GET_URL = "http://localhost:3002/token/get-token/";
 
     @Override
     public boolean checkCredentials(CredentialDto credentialDto) {
@@ -28,8 +35,14 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public TokenDto createToken(CredentialDto credentialDto) {
+    public TokenDto getToken(String username) {
         log.info("Inside createToken in LoginService");
-        return new TokenDto(1, "123");
+
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(TOKEN_SERVICE_GET_URL)
+                .queryParam("username", username);
+
+        TokenDto token = restTemplate.getForObject(uriBuilder.toUriString(), TokenDto.class);
+
+        return token;
     }
 }
