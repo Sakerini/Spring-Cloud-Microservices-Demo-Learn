@@ -25,7 +25,12 @@ public class LoginController {
         // Check credentials
         log.info("Inside loginservice /login/get-token");
         if (loginService.checkCredentials(credential)) {
-            ResponseEntity<TokenDto> entity = new ResponseEntity(loginService.getToken(credential.getUsername()), HttpStatus.OK);
+            ResponseEntity<TokenDto> entity =
+                    new ResponseEntity(
+                            loginService.getToken(
+                                    credential.getUsername(),
+                                    loginService.getCredentialByUsername(credential.getUsername()).getRole()),
+                            HttpStatus.OK);
             return entity;
         } else
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);

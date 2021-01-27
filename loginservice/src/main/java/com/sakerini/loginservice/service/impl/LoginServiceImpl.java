@@ -34,12 +34,19 @@ public class LoginServiceImpl implements LoginService {
         return false;
     }
 
+
     @Override
-    public TokenDto getToken(String username) {
+    public Credential getCredentialByUsername(String username) {
+        return credentialRepository.findByUsername(username);
+    }
+
+    @Override
+    public TokenDto getToken(String username, String role) {
         log.info("Inside createToken in LoginService");
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(TOKEN_SERVICE_GET_URL)
-                .queryParam("username", username);
+                .queryParam("username", username)
+                .queryParam("role", role);
 
         TokenDto token = restTemplate.getForObject(uriBuilder.toUriString(), TokenDto.class);
 

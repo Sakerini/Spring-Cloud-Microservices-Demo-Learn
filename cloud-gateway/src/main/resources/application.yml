@@ -1,6 +1,8 @@
+#Server Configuration
 server:
   port: 6969
 
+#App Configuration
 spring:
   application:
     name: API-GATEWAY
@@ -12,34 +14,34 @@ spring:
           predicates:
             - Path=/login/**
           filters:
-           - name: CircuitBreaker
-             args:
-               name: LOGIN-SERVICE
-               fallbackuri: forward:/login-service-fallback
+            - name: CircuitBreaker
+              args:
+                name: LOGIN-SERVICE
+                fallbackuri: forward:/login-service-fallback
         - id: TOKEN-SERVICE
-            uri: lb://TOKEN-SERVICE
-            predicates:
-              - Path=/token/**
-            filters:
-              - name: CircuitBreaker
-                args:
-                  name: TOKEN-SERVICE
-                  fallbackuri: forward:/token-service-fallback
+          uri: lb://TOKEN-SERVICE
+          predicates:
+            - Path=/token/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: TOKEN-SERVICE
+                fallbackuri: forward:/token-service-fallback
 
+#Circuit Breaker
 hystrix:
   command:
     fallbackcmd:
       execution:
         isolation:
           timeoutInMilliseconds: 5000
-
 management:
   endpoints:
     web:
       exposure:
         include: hystrix.stream
 
-
+#Eureka
 eureka:
   client:
     register-with-eureka: true

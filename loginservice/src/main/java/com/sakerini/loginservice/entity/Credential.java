@@ -28,12 +28,16 @@ public class Credential {
     private String username;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String role;
 
     @Override
     public String toString() {
         return "Credential{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
