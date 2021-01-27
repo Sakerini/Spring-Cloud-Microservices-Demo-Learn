@@ -17,6 +17,7 @@ public class LoginserviceApplication {
     @Bean
     CommandLineRunner commandLineRunner(CredentialRepository credentialRepository) {
         return args -> {
+            // Todo Replace plain text password strorage with hash password storage
             Credential admin = new Credential("admin", "admin");
             credentialRepository.save(admin);
         };
