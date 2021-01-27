@@ -1,10 +1,28 @@
 package com.sakerini.loginservice.entity;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+import javax.persistence.*;
+
+@Data
+@Entity(name = "Credentials")
 public class Credential {
+
+    @Id
+    @SequenceGenerator(
+            name = "credential_sequence",
+            sequenceName = "credential_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "credential_sequence")
+    private Long id;
+
+    @Column(unique = true,
+            nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
 
     public Credential(String username, String password) {

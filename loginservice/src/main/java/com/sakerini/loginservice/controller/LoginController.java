@@ -1,7 +1,8 @@
 package com.sakerini.loginservice.controller;
 
 import com.sakerini.loginservice.entity.Credential;
-import com.sakerini.loginservice.entity.Token;
+import com.sakerini.loginservice.entity.dto.CredentialDto;
+import com.sakerini.loginservice.entity.dto.TokenDto;
 import com.sakerini.loginservice.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,11 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/get-token")
-    public ResponseEntity<Token> login(@RequestBody Credential credential) {
+    public ResponseEntity<TokenDto> login(@RequestBody CredentialDto credential) {
         // Check credentials
         log.info("Inside loginservice /login/get-token");
         if (loginService.checkCredentials(credential)) {
-            ResponseEntity<Token> entity = new ResponseEntity(loginService.createToken(credential), HttpStatus.OK);
+            ResponseEntity<TokenDto> entity = new ResponseEntity(loginService.createToken(credential), HttpStatus.OK);
             return entity;
         } else
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);

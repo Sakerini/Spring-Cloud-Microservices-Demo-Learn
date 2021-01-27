@@ -1,9 +1,10 @@
 package com.sakerini.loginservice.service;
 
 import com.sakerini.loginservice.entity.Credential;
-import com.sakerini.loginservice.entity.Token;
+import com.sakerini.loginservice.entity.dto.CredentialDto;
+import com.sakerini.loginservice.entity.dto.TokenDto;
 
 public interface LoginService {
-    public boolean checkCredentials(Credential credential);
-    public Token createToken(Credential credential);
+    public boolean checkCredentials(CredentialDto credential);
+    public TokenDto createToken(CredentialDto credential);
 }

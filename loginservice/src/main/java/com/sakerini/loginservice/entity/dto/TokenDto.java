@@ -1,13 +1,13 @@
-package com.sakerini.loginservice.entity;
+package com.sakerini.loginservice.entity.dto;
 
 import lombok.Getter;
 
 @Getter
-public class Token {
+public class TokenDto {
     private int id;
     private String token;
 
-    public Token(int id, String token) {
+    public TokenDto(int id, String token) {
         this.id = id;
         this.token = token;
     }
