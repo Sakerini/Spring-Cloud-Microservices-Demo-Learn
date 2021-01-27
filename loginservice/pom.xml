@@ -47,6 +47,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- ZIPKIN AND SLEUTH NOT NEEDED FOR NOW
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
@@ -56,8 +57,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
             <version>2.2.4.RELEASE</version>
-        </dependency>
-
+        </dependency-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -1,6 +1,5 @@
 package com.sakerini.loginservice.controller;
 
-import com.sakerini.loginservice.entity.Credential;
 import com.sakerini.loginservice.entity.dto.CredentialDto;
 import com.sakerini.loginservice.entity.dto.TokenDto;
 import com.sakerini.loginservice.service.LoginService;
