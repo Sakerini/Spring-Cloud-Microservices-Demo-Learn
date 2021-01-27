@@ -20,7 +20,9 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "token_sequence")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(
+            unique = true,
+            nullable = false)
     private String username;
 
     @Column(nullable = false)

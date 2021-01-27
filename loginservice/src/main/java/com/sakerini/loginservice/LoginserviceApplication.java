@@ -24,7 +24,7 @@ public class LoginserviceApplication {
     CommandLineRunner commandLineRunner(CredentialRepository credentialRepository) {
         return args -> {
             // Todo Replace plain text password strorage with hash password storage
-            Credential admin = new Credential("admin", "admin");
+            Credential admin = new Credential(1L,"admin", "admin");
             credentialRepository.save(admin);
         };
     }
