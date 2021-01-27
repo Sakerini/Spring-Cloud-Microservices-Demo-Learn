@@ -47,7 +47,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- ZIPKIN AND SLEUTH NOT NEEDED FOR NOW
+        <!-- ZIPKIN AND SLEUTH NOT NEEDED FOR NOW IT IS USED FOR TRACKING
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
