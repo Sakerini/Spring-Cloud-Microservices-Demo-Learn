@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenDto {
-    private int id;
-    private String token;
+public class CredentialRequestDto {
+    private String username;
+    private String password;
 
     @Override
     public String toString() {
-        return "TokenDto{" +
-                "id=" + id +
-                ", token='" + token + '\'' +
+        return "Credential{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

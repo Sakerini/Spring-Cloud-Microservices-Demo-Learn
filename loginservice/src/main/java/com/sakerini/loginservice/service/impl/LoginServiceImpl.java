@@ -1,7 +1,7 @@
 package com.sakerini.loginservice.service.impl;
 
 import com.sakerini.loginservice.entity.Credential;
-import com.sakerini.loginservice.entity.dto.CredentialDto;
+import com.sakerini.loginservice.entity.dto.CredentialRequestDto;
 import com.sakerini.loginservice.entity.dto.TokenDto;
 import com.sakerini.loginservice.repository.CredentialRepository;
 import com.sakerini.loginservice.service.LoginService;
@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService {
     private final String TOKEN_SERVICE_GET_URL = "http://localhost:3002/token/get-token/";
 
     @Override
-    public boolean checkCredentials(CredentialDto credentialDto) {
+    public boolean checkCredentials(CredentialRequestDto credentialDto) {
         Credential credential = credentialRepository.findByUsername(credentialDto.getUsername());
         if (credential != null) {
             if (credential.getPassword().equals(credentialDto.getPassword())) {
